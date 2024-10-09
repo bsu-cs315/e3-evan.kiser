@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var _screen_bottom_limit: float
+var _screen_bottom_limit:= -1.0
 
 func _on_sleeping_state_changed() -> void:
 	emit_signal("projectile_sleeping_state_changed", is_sleeping)
