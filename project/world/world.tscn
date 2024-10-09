@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr0l07aycl5lr"]
-
-[ext_resource type="ArrayMesh" uid="uid://c2g8fgo04dwpq" path="res://world/ground_grass.obj" id="1_8xb2q"]
+[gd_scene load_steps=6 format=3 uid="uid://cr0l07aycl5lr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfcev"]
+sky_top_color = Color(0.189017, 0.358445, 1, 1)
+sky_horizon_color = Color(0.924974, 0.550438, 0.197118, 1)
+sky_curve = 0.0923359
 
 [sub_resource type="Sky" id="Sky_cu47c"]
 sky_material = SubResource("ProceduralSkyMaterial_sfcev")
@@ -14,12 +15,12 @@ sky = SubResource("Sky_cu47c")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p5kcx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htuep"]
-size = Vector3(100, 1, 100)
+size = Vector3(200, 1, 200)
 
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.887156, 0.46147, 0, -0.46147, 0.887156, 0, 16.3037, 41.3471)
+transform = Transform3D(1, 0, 0, 0, 0.976364, 0.216133, 0, -0.216133, 0.976364, 0, 17.3037, 71.3471)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19209e-07, 1, 0, -1, 1.19209e-07, 0, 61, 0)
@@ -33,13 +34,10 @@ environment = SubResource("Environment_1meem")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_p5kcx")
 
+[node name="Ground" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(200, 1, 200)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_htuep")
-
-[node name="Ground" type="CSGBox3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-size = Vector3(100, 1, 100)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Ground"]
-mesh = ExtResource("1_8xb2q")
