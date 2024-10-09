@@ -17,10 +17,10 @@ func _on_cannon_projectile_amount_changed() -> void:
 	$ProjectilesLeftLabel.modulate = Color.RED
 
 func _on_cannon_horizontal_angle_changed() -> void:
-	$HorizontalAngleLabel.text = "Horizontal Angle : %.d" % rad_to_deg(-1*$Cannon.angle_horizontal)
+	$HorizontalAngleLabel.text = "Horizontal Angle : %.d" % (rad_to_deg(-1*$Cannon.angle_horizontal) + 90)
 	$HorizontalAngleLabel.modulate = Color.RED
 
 
 func _on_cannon_vertical_angle_changed() -> void:
-	$VerticalAngleLabel.text = "Vertical Angle : %.d" % rad_to_deg(-1*$Cannon.angle_vertical)
+	$VerticalAngleLabel.text = "Vertical Angle : %.d" % rad_to_deg($Cannon.angle_vertical)
 	$VerticalAngleLabel.modulate = Color.RED
