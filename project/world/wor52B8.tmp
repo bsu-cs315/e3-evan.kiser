@@ -43,11 +43,13 @@ environment = SubResource("Environment_1meem")
 physics_material_override = SubResource("PhysicsMaterial_p5kcx")
 
 [node name="GroundBox" type="CSGBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_lljdn")
 
 [node name="GroundCollisionShape" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_htuep")
 
 [node name="Cannon" parent="." instance=ExtResource("1_fnbxv")]

@@ -1,17 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5k3jr2gwuwbc"]
+[gd_scene load_steps=3 format=3 uid="uid://b5k3jr2gwuwbc"]
 
 [ext_resource type="Script" path="res://cannon/cannon.gd" id="1_i4t4o"]
 [ext_resource type="ArrayMesh" uid="uid://0q28nhk4cvfx" path="res://cannon/cannon.obj" id="1_tq6sh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ye6y8"]
-size = Vector3(5, 4.5, 6)
-
-[node name="Cannon" type="RigidBody3D"]
+[node name="Cannon" type="Node3D"]
 script = ExtResource("1_i4t4o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_tq6sh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004, 2.25, -1.271)
-shape = SubResource("BoxShape3D_ye6y8")
+[node name="CannonBallSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93937, -4.33172)

@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Node3D
 
 signal power_changed
 signal vertical_angle_changed
@@ -8,14 +8,14 @@ signal no_remaining_projectiles
 
 const _MIN_POWER := 0
 const _MAX_POWER := 2000
-const _MIN_VERTICAL_ANGLE := deg_to_rad(0)
-const _MAX_VERTICAL_ANGLE :=deg_to_rad(90)
+const _MIN_VERTICAL_ANGLE := deg_to_rad(-90)
+const _MAX_VERTICAL_ANGLE := deg_to_rad(0)
 const _MIN_HORIZONTAL_ANGLE := deg_to_rad(-180)
 const _MAX_HORIZONTAL_ANGLE :=deg_to_rad(0)
 
 @export var power := 800.
 @export var power_change_rate := 200.
-@export var angle_vertical := -TAU/4
+@export var angle_vertical := -TAU/8
 @export var angle_horizontal := -TAU/4
 @export var angle_change_rate := TAU/8
 @export var can_shoot := true
@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 			impulse.rotated(Vector3(1,0,0), angle_horizontal)
 			_current_ball = preload("res://ball/ball.tscn").instantiate() as RigidBody3D
 			get_parent().add_child(_current_ball)
-			_current_ball.global_position = global_position
+			_current_ball.global_position = $CannonBallSpawnPoint.global_position
 			_current_ball.apply_impulse(impulse)
 			balls_left -= 1
 			if balls_left == 0:
