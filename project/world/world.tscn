@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr0l07aycl5lr"]
+[gd_scene load_steps=10 format=3 uid="uid://cr0l07aycl5lr"]
 
 [ext_resource type="PackedScene" uid="uid://b5k3jr2gwuwbc" path="res://cannon/cannon.tscn" id="1_fnbxv"]
+[ext_resource type="Script" path="res://world/world.gd" id="1_xsxix"]
 [ext_resource type="PackedScene" uid="uid://bkn6l3ysp2jw8" path="res://target/target.tscn" id="2_liqd3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfcev"]
@@ -24,6 +25,7 @@ albedo_color = Color(1.68458e-07, 0.268509, 0.0226525, 1)
 size = Vector3(100, 1, 100)
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_xsxix")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 17.304, 59.347)
@@ -58,3 +60,32 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41, 0,
 
 [node name="Target2" parent="." instance=ExtResource("2_liqd3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32, 0, -19)
+
+[node name="PowerLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 26, -35)
+pixel_size = 0.1
+text = "Power : "
+
+[node name="VerticalAngleLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 22, -35)
+pixel_size = 0.1
+text = "Vertcial Angle : "
+
+[node name="HorizontalAngleLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 18, -35)
+pixel_size = 0.1
+text = "Horizontal Angle : "
+
+[node name="ProjectilesLeftLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 14, -35)
+pixel_size = 0.1
+text = "Projectiles Left : 5"
+
+[node name="WinLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 22, -35)
+pixel_size = 0.1
+
+[connection signal="horizontal_angle_changed" from="Cannon" to="." method="_on_cannon_horizontal_angle_changed"]
+[connection signal="power_changed" from="Cannon" to="." method="_on_cannon_power_changed"]
+[connection signal="projectile_amount_changed" from="Cannon" to="." method="_on_cannon_projectile_amount_changed"]
+[connection signal="vertical_angle_changed" from="Cannon" to="." method="_on_cannon_vertical_angle_changed"]
