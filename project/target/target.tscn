@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkn6l3ysp2jw8"]
+[gd_scene load_steps=4 format=3 uid="uid://bkn6l3ysp2jw8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bvn41qkgb3tjq" path="res://target/chest.obj" id="1_8js2o"]
+[ext_resource type="Script" path="res://target/target.gd" id="1_ug06h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7stc"]
 size = Vector3(5, 5.4, 5)
@@ -8,6 +9,7 @@ size = Vector3(5, 5.4, 5)
 [node name="Target" type="RigidBody3D"]
 contact_monitor = true
 max_contacts_reported = 1
+script = ExtResource("1_ug06h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_8js2o")
