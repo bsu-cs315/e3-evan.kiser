@@ -8,8 +8,10 @@ signal no_remaining_projectiles
 
 const _MIN_POWER := 0
 const _MAX_POWER := 2000
-const _MIN_ANGLE := deg_to_rad(-180)
-const _MAX_ANGLE :=deg_to_rad(0)
+const _MIN_VERTICAL_ANGLE := deg_to_rad(0)
+const _MAX_VERTICAL_ANGLE :=deg_to_rad(90)
+const _MIN_HORIZONTAL_ANGLE := deg_to_rad(-180)
+const _MAX_HORIZONTAL_ANGLE :=deg_to_rad(0)
 
 @export var power := 800.
 @export var power_change_rate := 200.
@@ -31,13 +33,13 @@ func _process(delta: float) -> void:
 	var angle_vertical_axis = Input.get_axis("angle_down", "angle_up")
 	if angle_vertical_axis != 0:
 		angle_vertical += angle_vertical_axis * angle_change_rate * delta
-		angle_vertical = clampf(angle_vertical, _MIN_ANGLE, _MAX_ANGLE)
+		angle_vertical = clampf(angle_vertical, _MIN_VERTICAL_ANGLE, _MAX_VERTICAL_ANGLE)
 		vertical_angle_changed.emit()
 	
 	var angle_horizontal_axis = Input.get_axis("angle_left", "angle_right")
 	if angle_horizontal_axis != 0:
 		angle_horizontal += angle_horizontal_axis * angle_change_rate * delta
-		angle_horizontal = clampf(angle_horizontal, _MIN_ANGLE, _MAX_ANGLE)
+		angle_horizontal = clampf(angle_horizontal, _MIN_HORIZONTAL_ANGLE, _MAX_HORIZONTAL_ANGLE)
 		horizontal_angle_changed.emit()
 
 	if Input.is_action_just_pressed("launch") and balls_left > 0:
