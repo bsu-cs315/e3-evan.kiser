@@ -7,14 +7,14 @@ signal projectile_amount_changed
 signal no_remaining_projectiles
 
 const _MIN_POWER := 0
-const _MAX_POWER := 2000
+const _MAX_POWER := 100
 const _MIN_VERTICAL_ANGLE := deg_to_rad(-90)
 const _MAX_VERTICAL_ANGLE := deg_to_rad(0)
 const _MIN_HORIZONTAL_ANGLE := deg_to_rad(-180)
 const _MAX_HORIZONTAL_ANGLE :=deg_to_rad(0)
 
-@export var power := 800.
-@export var power_change_rate := 200.
+@export var power := 50.
+@export var power_change_rate := 10.
 @export var angle_vertical := -TAU/8
 @export var angle_horizontal := -TAU/4
 @export var angle_change_rate := TAU/8
