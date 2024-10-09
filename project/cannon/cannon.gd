@@ -42,11 +42,13 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("launch") and balls_left > 0:
 		if _current_ball == null or _current_ball.is_sleeping():
+			var impulse := Vector3(1,0,0) * power
+			impulse.rotated(Vector3(0,1,0), angle_vertical)
+			impulse.rotated(Vector3(0,0,1), angle_horizontal)
 			_current_ball = preload("res://ball/ball.tscn").instantiate() as RigidBody3D
 			get_parent().add_child(_current_ball)
 			_current_ball.global_position = global_position
-			_current_ball.apply_impulse(Vector3(power,angle_vertical,angle_horizontal))
-			$CannonShotSound.playing = true
+			_current_ball.apply_impulse(impulse)
 			balls_left -= 1
 			if balls_left == 0:
 				no_remaining_projectiles.emit()
