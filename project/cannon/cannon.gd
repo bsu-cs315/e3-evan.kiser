@@ -51,7 +51,13 @@ func _process(delta: float) -> void:
 			get_parent().add_child(_current_ball)
 			_current_ball.global_position = $CannonBallSpawnPoint.global_position
 			_current_ball.apply_impulse(impulse)
+			_remove_ball_timer()
 			balls_left -= 1
 			if balls_left == 0:
 				no_remaining_projectiles.emit()
 			projectile_amount_changed.emit()
+
+
+func _remove_ball_timer() -> void:
+	await(get_tree().create_timer(5).timeout)
+	_current_ball.queue_free()
