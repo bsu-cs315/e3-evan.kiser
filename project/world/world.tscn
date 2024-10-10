@@ -79,8 +79,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 14, -35)
 pixel_size = 0.1
 text = "Projectiles Left : 3"
 
-[node name="WinLabel" type="Label3D" parent="."]
+[node name="TargetHitLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 22, -35)
+pixel_size = 0.1
+
+[node name="WinLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 18, -35)
 pixel_size = 0.1
 
 [connection signal="horizontal_angle_changed" from="Cannon" to="." method="_on_cannon_horizontal_angle_changed"]

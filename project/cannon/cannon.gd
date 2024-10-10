@@ -19,7 +19,7 @@ const _MAX_HORIZONTAL_ANGLE :=deg_to_rad(90)
 @export var angle_horizontal := TAU/16
 @export var angle_change_rate := TAU/8
 @export var can_shoot := true
-@export var balls_left := 3
+@export var balls_left := 5
 var _current_ball : RigidBody3D = null
 
 

@@ -1,5 +1,7 @@
 extends Node3D
 
+var _targets_hit
+
 func _on_cannon_power_changed() -> void:
 	$PowerLabel.text = "Power : %.d" % $Cannon.power
 	$PowerLabel.modulate = Color.RED
@@ -19,12 +21,20 @@ func _on_cannon_vertical_angle_changed() -> void:
 
 
 func _on_target_1_target_hit() -> void:
-	$WinLabel.text = "You hit the Target!"
-	await(get_tree().create_timer(5).timeout)
-	#get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
+	if _targets_hit == 1:
+		$TargetHitLabel.text = "You hit one Target!"
+	if _targets_hit == 2:
+		$TargetHitLabel.text = "You hit both Target!"
 
 
 func _on_target_2_target_hit() -> void:
-	$WinLabel.text = "You hit the Target!"
+	if _targets_hit == 1:
+		$TargetHitLabel.text = "You hit one Target!"
+	if _targets_hit == 2:
+		$TargetHitLabel.text = "You hit both Target!"
 	await(get_tree().create_timer(5).timeout)
 	#get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
+
+func _both_targets_hit() -> void:
+	if _targets_hit == 2:
+		$WinLabel.text = "You Win!\nPress T to return to the Title Screen"
