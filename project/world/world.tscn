@@ -53,7 +53,7 @@ shape = SubResource("BoxShape3D_htuep")
 [node name="Cannon" parent="." instance=ExtResource("1_fnbxv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39)
 
-[node name="Target" parent="." instance=ExtResource("2_liqd3")]
+[node name="Target1" parent="." instance=ExtResource("2_liqd3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41, 0, 6)
 
 [node name="Target2" parent="." instance=ExtResource("2_liqd3")]
@@ -77,7 +77,7 @@ text = "Horizontal Angle : "
 [node name="ProjectilesLeftLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 14, -35)
 pixel_size = 0.1
-text = "Projectiles Left : 5"
+text = "Projectiles Left : 3"
 
 [node name="WinLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 22, -35)
@@ -87,3 +87,5 @@ pixel_size = 0.1
 [connection signal="power_changed" from="Cannon" to="." method="_on_cannon_power_changed"]
 [connection signal="projectile_amount_changed" from="Cannon" to="." method="_on_cannon_projectile_amount_changed"]
 [connection signal="vertical_angle_changed" from="Cannon" to="." method="_on_cannon_vertical_angle_changed"]
+[connection signal="target_hit" from="Target1" to="." method="_on_target_1_target_hit"]
+[connection signal="target_hit" from="Target2" to="." method="_on_target_2_target_hit"]

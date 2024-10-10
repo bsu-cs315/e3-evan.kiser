@@ -1,13 +1,5 @@
 extends Node3D
 
-
-func _process(_delta: float) -> void:	
-	if $Target.winDetector:
-		$WinLabel.text = "You hit the Flag!"
-		await(get_tree().create_timer(5).timeout)
-		#get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
-
-
 func _on_cannon_power_changed() -> void:
 	$PowerLabel.text = "Power : %.d" % $Cannon.power
 	$PowerLabel.modulate = Color.RED
@@ -24,3 +16,15 @@ func _on_cannon_horizontal_angle_changed() -> void:
 func _on_cannon_vertical_angle_changed() -> void:
 	$VerticalAngleLabel.text = "Vertical Angle : %.d" % rad_to_deg($Cannon.angle_vertical)
 	$VerticalAngleLabel.modulate = Color.RED
+
+
+func _on_target_1_target_hit() -> void:
+	$WinLabel.text = "You hit the Target!"
+	await(get_tree().create_timer(5).timeout)
+	#get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
+
+
+func _on_target_2_target_hit() -> void:
+	$WinLabel.text = "You hit the Target!"
+	await(get_tree().create_timer(5).timeout)
+	#get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
