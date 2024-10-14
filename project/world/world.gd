@@ -31,6 +31,7 @@ func _on_cannon_vertical_angle_changed() -> void:
 
 func _on_target_1_target_hit() -> void:
 	_targets_hit += 1
+	$Target1.queue_free()
 	if _targets_hit == 1:
 		$TargetHitLabel.text = "You hit one Target!"
 	if _targets_hit == 2:
@@ -39,6 +40,7 @@ func _on_target_1_target_hit() -> void:
 
 func _on_target_2_target_hit() -> void:
 	_targets_hit += 1
+	$Target2.queue_free()
 	if _targets_hit == 1:
 		$TargetHitLabel.text = "You hit one Target!"
 	if _targets_hit == 2:
